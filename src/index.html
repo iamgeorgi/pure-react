@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- Give us access to React and React-DOM libraries -->
+  <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+  <!-- Once we get this packages we can access them within global javascript namespace. Type for example React and ReactDOM in your browser console -->
+  <script>
+    class App extends React.Component {
+      render() {
+        return React.createElement("div", { className: "card-list" }, [
+          React.createElement("h1", {}, "React is rendered!!!"),
+          React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' }),
+          React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' }),
+          React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' })
+        ])
+      }
+    }
+
+    const Person = props => {
+      return React.createElement("div", {}, [
+        React.createElement("h1", {}, props.name),
+        React.createElement("p", {}, props.occupation),
+      ])
+    };
+
+    // const App = () => {
+    //   return React.createElement("div", { className: "card-list" }, [
+    //     React.createElement("h1", {}, "React is rendered!!!"),
+    //     React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' }),
+    //     React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' }),
+    //     React.createElement(Person, { name: 'Yihua', occupation: 'Deveoper' })
+    //   ])
+    // };
+
+    // inside createElement we define 
+    // 1. the parent element which we want to create
+    // 2. what attribute we want to insert inside that element
+    // 3. the child we want to nest inside parent element or what we want to render
+
+    ReactDOM.render(React.createElement(App), document.getElementById("root"))
+  </script>
+</body>
+
+</html>
